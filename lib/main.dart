@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Colunas")
+          title: Text("App")
         ),
         body: AxisAligment(),
       )
