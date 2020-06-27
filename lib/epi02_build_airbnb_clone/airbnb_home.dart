@@ -7,7 +7,9 @@ class AirbnbApp extends StatefulWidget {
 }
 
 class _AirbnbAppState extends State<AirbnbApp> {
-  Color _color = Color.fromARGB(224, 129, 143, 2);
+  Color _color = Color.fromRGBO(251, 129, 144, 1);
+
+  int _currrentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +25,33 @@ class _AirbnbAppState extends State<AirbnbApp> {
 
         backgroundColor: Colors.white,
         elevation: 0,
-        unselectedIconTheme: IconThemeData(color: _color, size: 25.0),
-        selectedIconTheme: IconThemeData(color: Colors.black, size: 25.0),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+
+        unselectedItemColor: Colors.black,
+        unselectedIconTheme: IconThemeData(color: Colors.black, size: 28.0),
+        unselectedLabelStyle: TextStyle(color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.w600),
+        unselectedFontSize: 10.0,
+
+        selectedItemColor: _color,
+        selectedIconTheme: IconThemeData(color: _color, size: 28.0),
+        selectedLabelStyle: TextStyle(color: _color, fontSize: 10.0, fontWeight: FontWeight.w600),
+        selectedFontSize: 10.0,
+        
+        onTap: (int index){
+          setState(() {
+            _currrentIndex = index;
+          });
+        },
+        currentIndex: _currrentIndex,
+
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
 
         items:[
-          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.search), title: Text("")),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite_border), title: Text("")), 
-          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.airbnb), title: Text("")), 
-          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.inbox), title: Text("")), 
-          BottomNavigationBarItem(icon: Icon(Icons.person_outline), title: Text("")),  
+          BottomNavigationBarItem(icon: Icon(Icons.search), title: Text("EXPLORE")),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite_border), title: Text("SAVED")), 
+          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.airbnb), title: Text("TRIPS")), 
+          BottomNavigationBarItem(icon: Icon(Icons.inbox), title: Text("INBOX")), 
+          BottomNavigationBarItem(icon: Icon(Icons.person_outline), title: Text("PROFILE")),  
         ]
       ),
     );
