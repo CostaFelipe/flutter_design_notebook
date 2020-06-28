@@ -7,20 +7,20 @@ class AirbnbApp extends StatefulWidget {
 }
 
 class _AirbnbAppState extends State<AirbnbApp> {
-  Color _color = Color.fromRGBO(251, 129, 144, 1);
+  List<Widget> pages;
 
+  Color _color = Color.fromRGBO(251, 129, 144, 1);
   int _currrentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
 
-          ]
-        ),
-      ),
+    _definePages();
+
+    return Scaffold(
+
+      body: pages[_currrentIndex], 
+
       bottomNavigationBar: BottomNavigationBar(
 
         backgroundColor: Colors.white,
@@ -55,5 +55,15 @@ class _AirbnbAppState extends State<AirbnbApp> {
         ]
       ),
     );
+  }
+
+  _definePages(){
+    pages = [
+      Placeholder(color: Colors.red),
+      Placeholder(color: Colors.amber),
+      Placeholder(color: Colors.teal),
+      Placeholder(color: Colors.deepPurple),
+      Placeholder(color: Colors.pinkAccent),
+    ];
   }
 }
