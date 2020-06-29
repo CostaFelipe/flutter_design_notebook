@@ -11,6 +11,7 @@ class _AirbnbAppState extends State<AirbnbApp> {
 
   Color _color = Color.fromRGBO(251, 129, 144, 1);
   int _currrentIndex = 0;
+  double padding = 16.0;
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +59,113 @@ class _AirbnbAppState extends State<AirbnbApp> {
   }
 
   _definePages(){
+
     pages = [
-      Placeholder(color: Colors.red),
+      //Placeholder(color: Colors.red),
+    
+    SafeArea(
+      child:Padding(
+        padding: EdgeInsets.only(left: padding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+               margin: EdgeInsets.only(top: padding/2, right: padding), 
+               height: 40.0,
+               decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.0),
+                  color: Colors.white,
+                  boxShadow: [BoxShadow(color: Colors.black12, spreadRadius: 1, blurRadius: 1)],
+               ),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "Fortaleza, CE",
+                     hintStyle: TextStyle(
+                        fontSize: 16.0, color: Colors.black45, fontWeight: FontWeight.w600
+                     ),
+                   contentPadding: EdgeInsets.all(12.0)
+                ),
+             ),
+            ),  
+            Container(
+              height: 48.0,
+              child: ListView(
+                padding: EdgeInsets.only(top: padding),
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  //Datas
+                  Container(
+                    margin: EdgeInsets.only(right: padding),
+                    width: 80.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black12, width: 1.0),
+                    ),
+                    child: Center(
+                      child: Text("Datas", 
+                      style: TextStyle(
+                        fontSize: 16.0, 
+                        color: Colors.black54, 
+                        fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                  //2 clientes, 1 criança
+
+                  Container(
+                    width: 150.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black12, width: 1.0),
+                      color: Colors.teal
+                    ),
+                    child: Center(
+                      child: Text("2 Clientes, 1 criança", 
+                      style: TextStyle(
+                        fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                ], 
+              ),
+            ),
+
+            //explore Fortaleza
+            Container(
+              margin: EdgeInsets.only(top: padding * 2),
+              height: 150.0,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  //titulo
+                  Text("Explore Fortaleza".toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold
+                      ),
+                  ),
+                  //ListaView
+                  Flexible(
+                    fit: FlexFit.tight,
+                    child: ListView.builder(
+                      padding: EdgeInsets.only(top: padding),
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount: 4,
+                      itemBuilder: (context, index){
+                        return Container(
+                           margin: EdgeInsets.only(right: padding),
+                           width: 150.0,
+                           child: Placeholder(), 
+                        );
+                      }),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ), 
+      ),
+    ),
+
       Placeholder(color: Colors.amber),
       Placeholder(color: Colors.teal),
       Placeholder(color: Colors.deepPurple),
